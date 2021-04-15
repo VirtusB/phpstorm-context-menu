@@ -38,7 +38,9 @@ else
 
 # HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\Open in PhpStorm
 
-$phpStormPath = "C:\Users\Focuz\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0"
+$username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1]
+
+$phpStormPath = "C:\Users\$username\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0"
 $phpStormPath = $phpStormPath + "\" + (Get-ChildItem -Directory $phpStormPath | Where-Object Name -NotMatch "plugins" | Select-Object -exp Name)
 $phpStormPath = $phpStormPath + "\bin\phpstorm64.exe"
 $phpStormIconPath = "$phpStormPath,0"
@@ -47,7 +49,7 @@ $phpStormCommand = "$phpStormPath $a"
 $b = '"%V"'
 $phpStormBackgroundCommand = "$phpStormPath $b"
 
-Write-Host "PhpStorm path found: " + $phpStormPath
+Write-Host "PhpStorm path found: " $phpStormPath
 Write-Host "Do you want to proceed?"
 
 $confirmation = Read-Host

@@ -40,9 +40,12 @@ else
 
 $username = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name.Split("\")[1]
 
-$phpStormPath = "C:\Users\$username\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0"
-$phpStormPath = $phpStormPath + "\" + (Get-ChildItem -Directory $phpStormPath | Where-Object Name -NotMatch "plugins" | Select-Object -exp Name)
-$phpStormPath = $phpStormPath + "\bin\phpstorm64.exe"
+$phpStormPath = "C:\Users\$username\AppData\Local\Programs\PhpStorm\bin\phpstorm64.exe"
+
+#$phpStormPath = "C:\Users\$username\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0"
+#$phpStormPath = $phpStormPath + "\" + (Get-ChildItem -Directory $phpStormPath | Where-Object Name -NotMatch "plugins" | Select-Object -exp Name)
+#$phpStormPath = $phpStormPath + "\bin\phpstorm64.exe"
+
 $phpStormIconPath = "$phpStormPath,0"
 $a = '"%1"'
 $phpStormCommand = "$phpStormPath $a"
